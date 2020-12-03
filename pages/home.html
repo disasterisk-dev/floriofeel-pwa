@@ -1,0 +1,128 @@
+<html lang="en">
+
+    <head>
+        <!-- Meta -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Floriofeel</title>
+    
+        <!-- Styles -->
+        <link type="text/css" href="/css/materialize.min.css" rel="stylesheet">
+        <link type="text/css" href="/css/styles.css" rel="stylesheet">
+    
+        <!-- Icon Libraries -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+            integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+        <!-- Scripts -->
+        <script type="text/javascript" src="/js/materialize.min.js"></script>
+        <script type="text/javascript" src="/js/scripts.js"></script>
+        <link rel="manifest" href="/manifest.json">
+        <!-- iOS Support -->
+        <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png">
+        <meta name="apple-mobile-web-app-status-bar" content="#403038">
+        <meta name="theme-color" content="#403038">
+    </head>
+
+<body class="grey lighten-2">
+
+    <!-- top navigation -->
+    <div class="navbar-fixed">
+        <nav class="z-depth-0" style="background-color: #8c697b;">
+            <div class="nav-wrapper container center">
+    
+                </span>
+                <a href="/pages/home.html"><img class="responsive-img" src="/img/Floriofeel logo.png"
+                        style="height: 70%; padding-top: 15px;"></a>
+                <span class="right">
+                    <a href="/pages/history.html"><i class="material-icons">account_circle</i>
+                    </a>
+                </span>
+                <span class="left">
+                    <a onclick=""><i class="material-icons" style="color: #8c697b;">keyboard_backspace</i></a>
+                </span>
+            </div>
+        </nav>
+    </div>
+
+    <div id="home" style="display: block;">
+        <div class="container center">
+
+            <h5>How are you feeling today?</h5>
+            <br>
+
+            <div class="row">
+                <div class="col s4 l4">
+                    <div id="Rose" class="card" style="border-radius: 10px;">
+                        <a onclick="highlight('Rose')">
+                            <div class="card-content"><img style="opacity: 60%;" class="responsive-img" src="/img/roses.png" alt=""><span class="black-text hover-text">Loving</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col s4 l4">
+                    <div id="Thorn" class="card" style="border-radius: 10px;">
+                        <a onclick="highlight('Thorn')" class="text">
+                            <div class="card-content"><img style="opacity: 60%;" class="responsive-img" src="/img/roses.png" alt=""><span class="black-text hover-text">Happy</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col s4 l4">
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-content"><img style="opacity: 60%;" class="responsive-img" src="/img/roses.png" alt=""><span class="black-text hover-text">Angry</span></div>
+                    </div>
+                </div>
+                <div class="col s4 l4">
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-content"><img style="opacity: 60%;" class="responsive-img" src="/img/roses.png" alt=""><span class="black-text hover-text">Sad</span></div>
+                    </div>
+                </div>
+                <div class="col s4 l4">
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-content"><img style="opacity: 60%;" class="responsive-img" src="/img/roses.png" alt=""><span class="black-text hover-text">Lethargic</span></div>
+                    </div>
+                </div>
+                <div class="col s4 l4">
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-content"><img style="opacity: 60%;" class="responsive-img" src="/img/roses.png" alt=""><span class="black-text hover-text">Lonely</span></div>
+                    </div>
+                </div>
+                <div class="col s4 l4">
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-content"><img style="opacity: 60%;" class="responsive-img" src="/img/roses.png" alt=""><span class="black-text hover-text">Loving</span></div>
+                    </div>
+                </div>
+                <div class="col s4 l4">
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-content"><img style="opacity: 60%;" class="responsive-img" src="/img/roses.png" alt=""><span class="black-text hover-text">Loving</span></div>
+                    </div>
+                </div>
+                <div class="col s4 l4">
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-content"><img style="opacity: 60%;" class="responsive-img" src="/img/roses.png" alt=""><span class="black-text hover-text">Loving</span></div>
+                    </div>
+                </div>
+
+                <div class="col s12 l12">
+                    <span style="font-size: xx-large;" id="name">...</span><p id="desc">...</p>
+                    
+                </div>
+    
+                <div class="col s8 l8 offset-l2 offset-s2">
+                    <br>
+                    <a id="proceed" href="/pages/nudges.html" class="btn disabled"
+                        style="border-radius: 100px; width: 100%; background-color: #403038;"><span style="font-size: x-small;">Proceed</span></a>
+                </div>
+                
+            </div>
+
+            
+
+        </div>
+    </div>
+
+    
+    <script src="/js/app.js"></script>
+</body>
+
+</html>

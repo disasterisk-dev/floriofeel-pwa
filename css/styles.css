@@ -1,0 +1,18 @@
+body{
+    margin: 0;
+    height: 100%;
+    overflow-x: hidden;
+
+}
+
+::placeholder{
+    color: #403038;
+}
+
+.hover-text{
+    font-size: large; 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
