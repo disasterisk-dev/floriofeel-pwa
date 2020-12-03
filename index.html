@@ -30,13 +30,13 @@
     <div id="landing">
         <div class="container center">
             <div class="row center">
-                
+
             </div>
             <div class="row center" style="display: block; padding-top: 200px;" id="main">
                 <div class="col s12 l12">
                     <img class="responsive-img" src="/img/Floriofeel logo.png" alt="">
                 </div>
-                
+
                 <div class="col s8 l8 offset-l2 offset-s2">
                     <br><br><br>
                     <a style="width: 100%; border-radius: 100px; background-color: #403038;" onclick="show('in')"
@@ -55,14 +55,16 @@
                     <br>
                     <div class="col s8 l8 offset-l2 offset-s2">
                         <div class="card input-field" style="border-radius: 100px;">
-                            <input style="border: 0px;" placeholder="email" id="email" type="text" class="validate center">
+                            <input style="border: 0px;" placeholder="email" id="email" type="text"
+                                class="validate center">
 
                         </div>
                     </div>
                     <div class="col s8 l8 offset-l2 offset-s2">
                         <br>
                         <div class="card input-field" style="border-radius: 100px;">
-                            <input style="border: 0px;" placeholder="password" id="email" type="text" class="validate center">
+                            <input style="border: 0px;" placeholder="password" id="email" type="text"
+                                class="validate center">
 
                         </div>
                     </div>
@@ -79,21 +81,24 @@
                     <br>
                     <div class="col s8 l8 offset-l2 offset-s2">
                         <div class="card input-field" style="border-radius: 100px;">
-                            <input style="border: 0px;" placeholder="email" id="email" type="text" class="validate center">
+                            <input style="border: 0px;" placeholder="email" id="email" type="text"
+                                class="validate center">
 
                         </div>
                     </div>
                     <div class="col s8 l8 offset-l2 offset-s2">
                         <br>
                         <div class="card input-field" style="border-radius: 100px;">
-                            <input style="border: 0px;" placeholder="password" id="email" type="text" class="validate center">
+                            <input style="border: 0px;" placeholder="password" id="email" type="text"
+                                class="validate center">
 
                         </div>
                     </div>
                     <div class="col s8 l8 offset-l2 offset-s2">
                         <br>
                         <div class="card input-field" style="border-radius: 100px;">
-                            <input style="border: 0px;" placeholder=" confirm password" id="email" type="text" class="validate center">
+                            <input style="border: 0px;" placeholder=" confirm password" id="email" type="text"
+                                class="validate center">
 
                         </div>
                     </div>
@@ -109,8 +114,30 @@
 
     </div>
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
 
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyANtOHw7cyhZM0JC3545b1_3CkNA8Hzles",
+            authDomain: "floriofeel-pwa.firebaseapp.com",
+            projectId: "floriofeel-pwa",
+            storageBucket: "floriofeel-pwa.appspot.com",
+            messagingSenderId: "650188182160",
+            appId: "1:650188182160:web:80f34729f36a4c299bfe15",
+            measurementId: "G-3D0PVZ5JDN"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
+    
     <script src="/js/app.js"></script>
+    <script src="/js/db.js"></script>
+    <script src="/js/ui.js"></script>
 </body>
 
 </html>
