@@ -1,29 +1,29 @@
 <html lang="en">
 
-    <head>
-        <!-- Meta -->
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Floriofeel</title>
-    
-        <!-- Styles -->
-        <link type="text/css" href="/css/materialize.min.css" rel="stylesheet">
-        <link type="text/css" href="/css/styles.css" rel="stylesheet">
-    
-        <!-- Icon Libraries -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
-            integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    
-        <!-- Scripts -->
-        <script type="text/javascript" src="/js/materialize.min.js"></script>
-        <script type="text/javascript" src="/js/scripts.js"></script>
-        <link rel="manifest" href="/manifest.json">
-        <!-- iOS Support -->
-        <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png">
-        <meta name="apple-mobile-web-app-status-bar" content="#403038">
-        <meta name="theme-color" content="#403038">
-    </head>
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floriofeel</title>
+
+    <!-- Styles -->
+    <link type="text/css" href="../css/materialize.min.css" rel="stylesheet">
+    <link type="text/css" href="../css/styles.css" rel="stylesheet">
+
+    <!-- Icon Libraries -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+        integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="../js/materialize.min.js"></script>
+    <script type="text/javascript" src="../js/scripts.js"></script>
+    <link rel="manifest" href="../manifest.json">
+    <!-- iOS Support -->
+    <link rel="apple-touch-icon" href="../img/icons/icon-96x96.png">
+    <meta name="apple-mobile-web-app-status-bar" content="#403038">
+    <meta name="theme-color" content="#403038">
+</head>
 
 <body class="grey lighten-2">
 
@@ -31,12 +31,12 @@
     <div class="navbar-fixed">
         <nav class="z-depth-0" style="background-color: #8c697b;">
             <div class="nav-wrapper container center">
-    
+
                 </span>
-                <a href="/pages/home.html"><img class="responsive-img" src="/img/Floriofeel logo.png"
+                <a href="./home.html"><img class="responsive-img" src="../img/Floriofeel logo.png"
                         style="height: 70%; padding-top: 15px;"></a>
                 <span class="right">
-                    <a href="/pages/history.html"><i class="material-icons">account_circle</i>
+                    <a href="./history.html"><i class="material-icons">account_circle</i>
                     </a>
                 </span>
                 <span class="left">
@@ -59,7 +59,7 @@
                     <div class="card" style="border-radius: 10px;">
                         <div class="card-content">
                             <h5>If you're feeling [emotion], consider...</h5>
-                            
+
                             <ul>
                                 <li>take a walk</li>
                                 <li>tidy up</li>
@@ -71,19 +71,22 @@
 
                 <div class="col s8 l8 offset-l2 offset-s2">
                     <br>
-                    <a href="/pages/info.html" class="btn" style="border-radius: 100px; width: 100%; background-color: #403038;"><span style="font-size: x-small;">About the [flower name]</span></a>
+                    <a href="./info.html" class="btn"
+                        style="border-radius: 100px; width: 100%; background-color: #403038;"><span
+                            style="font-size: x-small;">About the [flower name]</span></a>
                 </div>
 
                 <div class="col s8 l8 offset-l2 offset-s2">
                     <br>
-                    <a href="/pages/history.html" class="btn"
-                        style="border-radius: 100px; width: 100%; background-color: #403038;"><span style="font-size: x-small;">conclude</span></a>
+                    <a href="./history.html" class="btn"
+                        style="border-radius: 100px; width: 100%; background-color: #403038;"><span
+                            style="font-size: x-small;">conclude</span></a>
                 </div>
             </div>
         </div>
     </div>
 
-    
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
@@ -104,10 +107,10 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
     </script>
-    
-    <script src="/js/app.js"></script>
-    <script src="/js/db.js"></script>
-    <script src="/js/ui.js"></script>
+
+<script src="../js/app.js"></script>
+<script src="../js/db.js"></script>
+<script src="../js/ui.js"></script>
 </body>
 
 </html>
