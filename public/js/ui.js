@@ -31,6 +31,7 @@ function showName(id, name, desc, emotion, clicks) {
         </div>
     `;
 
+    sessionStorage.setItem("id", id)
     sessionStorage.setItem("name", name);
     sessionStorage.setItem("emotion", emotion);
     sessionStorage.setItem("clicks", clicks);
@@ -80,4 +81,12 @@ function populateNudges(){
     `;
 
     document.querySelector('.nudges').innerHTML += html;
+
+    var clicks = Math.floor(sessionStorage.getItem("clicks"));
+    clicks += 1;
+
+    db.collection('flowers').doc(sessionStorage.getItem("id")).update({
+        clicks: clicks
+    });
+
 }
