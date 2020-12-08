@@ -4,7 +4,7 @@ function renderFlowerOption(data, id) {
     const html = `
         <div class="col s4 l4" data-id="${id}">
             <div class="card" style="border-radius: 10px;">
-                <a onclick="showName('${id}','${data.name}','${data.description}','${data.emotion}','${data.clicks}');">
+                <a onclick="showName('${id}','${data.name}','${data.description}','${data.emotion}','${data.clicks}','${data.latin}','${data.image}','${data.info}');">
                     <div class="card-content"><img style="opacity: 100%;" class="responsive-img" src="${data.image}" alt=""></div>
                 </a>
             </div>
@@ -15,7 +15,7 @@ function renderFlowerOption(data, id) {
 
 }
 
-function showName(id, name, desc, emotion, clicks) {
+function showName(id, name, desc, emotion, clicks, latin, image, info) {
 
     document.querySelector('.highlight').innerHTML = null;
 
@@ -35,6 +35,9 @@ function showName(id, name, desc, emotion, clicks) {
     sessionStorage.setItem("name", name);
     sessionStorage.setItem("emotion", emotion);
     sessionStorage.setItem("clicks", clicks);
+    sessionStorage.setItem("latin", latin);
+    sessionStorage.setItem("image", image);
+    sessionStorage.setItem("info", info);
 
     document.querySelector('.highlight').innerHTML += html;
 }
@@ -89,4 +92,31 @@ function populateNudges(){
         clicks: clicks
     });
 
+}
+
+function populateInfo() {
+
+    const html = `
+        <div class="row">
+            <div class="col s4 l4">
+                <img class="responsive-img" src="${sessionStorage.getItem("image")}" alt="">
+            </div>
+            <div class="col s8 l8 center">
+                <h4>${sessionStorage.getItem("name")}</h4>
+                <h6><i>${sessionStorage.getItem("latin")}</i></h6>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col s12 l12">
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-content info-body">
+                            <p>${sessionStorage.getItem("info")}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    `;
+
+    document.querySelector('.info').innerHTML += html
 }
