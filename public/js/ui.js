@@ -20,7 +20,7 @@ function showName(id, name, desc, emotion, clicks, latin, image, info) {
     document.querySelector('.highlight').innerHTML = null;
 
     const html = `
-        <h4>${name}</h4>
+        <h5>${name}</h5>
         <p>${desc}</p>
         <div class="col s8 l8 offset-l2 offset-s2">
             <br>
@@ -46,9 +46,9 @@ function showName(id, name, desc, emotion, clicks, latin, image, info) {
 function populateNudges(){
 
     const html = `
-        <h5 style="color: #8c697b;">You are not alone...</h5>
+        <h5>You are not alone...</h5>
         <h1>${sessionStorage.getItem("clicks")}</h1>
-        <h5 style="color: #8c697b;">... other Floriofeel users chose the ${sessionStorage.getItem("name")} today.</h5>
+        <h5>... other Floriofeel ${sessionStorage.getItem("clicks") == "1" ? "user" : "users"} chose the ${sessionStorage.getItem("name")} today.</h5>
 
         <br>
 
