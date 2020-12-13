@@ -1,5 +1,5 @@
-const staticCacheName = 'site-static-v12';
-const dynamicCacheName = 'site-dynamic-v11';
+const staticCacheName = 'site-static-v15';
+const dynamicCacheName = 'site-dynamic-v14';
 const assets = [
     '/',
     '/index.html',
@@ -9,7 +9,7 @@ const assets = [
     '/js/materialize.min.js',
     '/css/styles.css',
     '/css/materialize.min.css',
-    '/img/Floriofeel logo.png',
+    '/img/floriofeel logo.png',
     '/img/HiResMeadow.jpg',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     'https://fonts.gstatic.com/s/materialicons/v67/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
