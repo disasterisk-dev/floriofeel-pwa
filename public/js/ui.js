@@ -43,9 +43,9 @@ function showName(id, name, desc, emotion, clicks, latin, image, info) {
 }
 
 
-function populateNudges(){
+function populateNudges() {
 
-    const html = `
+    var html = `
         <h5>You are not alone...</h5>
         <h1>${sessionStorage.getItem("clicks")}</h1>
         <h5>... other Floriofeel ${sessionStorage.getItem("clicks") == "1" ? "user" : "users"} chose the ${sessionStorage.getItem("name")} today.</h5>
@@ -58,10 +58,10 @@ function populateNudges(){
                     <div class="card-content">
                         <h5>If you're feeling ${sessionStorage.getItem("emotion")}, consider...</h5>
 
-                        <ul>
-                            <li>take a walk</li>
-                            <li>tidy up</li>
-                            <li>make some tea</li>
+                        <ul class="list">
+    `;
+
+    html += `
                         </ul>
                     </div>
                 </div>
@@ -84,6 +84,18 @@ function populateNudges(){
     `;
 
     document.querySelector('.nudges').innerHTML += html;
+
+    db.collection('flowers').doc(sessionStorage.getItem("id")).collection('nudges').onSnapshot((snapshot) => {
+        //console.log(snapshot.docChanges());
+        snapshot.docChanges().forEach(change => {
+            console.log(change.doc.id); //this works
+            var list = `
+            <li>${change.doc.id}</li> //this doesn't
+            `;
+        });
+    });
+
+    document.querySelector('.list').innerHTML += list;
 
     var clicks = Math.floor(sessionStorage.getItem("clicks"));
     clicks += 1;
