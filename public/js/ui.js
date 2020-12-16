@@ -45,6 +45,16 @@ function showName(id, name, desc, emotion, clicks, latin, image, info) {
 
 function populateNudges() {
 
+    db.collection('flowers').doc(sessionStorage.getItem("id")).collection('nudges').onSnapshot((snapshot) => {
+        //console.log(snapshot.docChanges());
+        var nudgeNum = 1;
+        snapshot.docChanges().forEach(change => {
+            sessionStorage.setItem(nudgeNum, change.doc.id);
+            nudgeNum++;
+            console.log(change.doc.id); //this works
+        });
+    });
+
     var html = `
         <h5>You are not alone...</h5>
         <h1>${sessionStorage.getItem("clicks")}</h1>
@@ -59,9 +69,9 @@ function populateNudges() {
                         <h5>If you're feeling ${sessionStorage.getItem("emotion")}, consider...</h5>
 
                         <ul class="list">
-    `;
-
-    html += `
+                            <li>${sessionStorage.getItem("1")}</li>
+                            <li>${sessionStorage.getItem("2")}</li>
+                            <li>${sessionStorage.getItem("3")}</li>
                         </ul>
                     </div>
                 </div>
@@ -85,17 +95,6 @@ function populateNudges() {
 
     document.querySelector('.nudges').innerHTML += html;
 
-    db.collection('flowers').doc(sessionStorage.getItem("id")).collection('nudges').onSnapshot((snapshot) => {
-        //console.log(snapshot.docChanges());
-        snapshot.docChanges().forEach(change => {
-            console.log(change.doc.id); //this works
-            var list = `
-            <li>${change.doc.id}</li> //this doesn't
-            `;
-        });
-    });
-
-    document.querySelector('.list').innerHTML += list;
 
     var clicks = Math.floor(sessionStorage.getItem("clicks"));
     clicks += 1;
