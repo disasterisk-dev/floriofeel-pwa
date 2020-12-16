@@ -23,7 +23,7 @@
     <!-- Scripts -->
     <script type="text/javascript" src="./js/materialize.min.js"></script>
     <script type="text/javascript" src="./js/scripts.js"></script>
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="./manifest.json">
     <!-- iOS Support -->
     <link rel="apple-touch-icon" href="./img/icons/icon-96x96.png">
     <meta name="apple-mobile-web-app-status-bar" content="#403038">
@@ -41,105 +41,82 @@
 
                 <div class="col s8 l8 offset-l2 offset-s2">
                     <br><br><br>
-                    <a style="width: 100%; border-radius: 100px; background-color: #403038;" onclick="show('in')"
-                        class="btn"><span style="font-size: x-small;">Sign In</span></a>
+                    <a style="width: 100%; border-radius: 100px; background-color: #403038;" href="#"
+                        data-target="modal-login" class="btn modal-trigger"><span style="font-size: x-small;">Sign
+                            In</span></a>
                 </div>
 
                 <div class="col s8 l8 offset-l2 offset-s2">
                     <br>
-                    <a style="width: 100%; border-radius: 100px; background-color: #403038;" onclick="show('up')"
-                        class="btn"><span style="font-size: x-small;">Create Account</span></a>
+                    <a style="width: 100%; border-radius: 100px; background-color: #403038;" href="#"
+                        data-target="modal-signup" class="btn modal-trigger"><span style="font-size: x-small;">Create Account</span></a>
                 </div>
             </div>
 
-            <div class="row center" style="display: none; padding-top: 200px;" id="in">
-                <form action="">
-                    <br>
-                    <div class="col s8 l8 offset-l2 offset-s2">
-                        <div class="card input-field" style="border-radius: 100px;">
-                            <input style="border: 0px;" placeholder="email" id="email" type="text"
-                                class="validate center">
-
-                        </div>
+        </div>
+        
+        <div class="modal" id="modal-login">
+            <div class="row container">
+                <br>
+                <h4 class="center">Sign In</h4>
+                <form id="login-form">
+                    <div class="input-field">
+                        <input id="login-email" type="email" required />
+                        <label for="login-email">Email</label>
                     </div>
-                    <div class="col s8 l8 offset-l2 offset-s2">
-                        <br>
-                        <div class="card input-field" style="border-radius: 100px;">
-                            <input style="border: 0px;" placeholder="password" id="email" type="text"
-                                class="validate center">
-
-                        </div>
-                    </div>
-                    <div class="col s8 l8 offset-l2 offset-s2">
-                        <br>
-                        <a style="width: 100%; border-radius: 100px; background-color: #403038;"
-                            href="./pages/home.html" class="btn"><span style="font-size: x-small;">Sign In</span></a>
-                    </div>
-                </form>
-            </div>
-
-            <div class="row center" style="display: none; padding-top: 150px;" id="up">
-                <form action="">
-                    <br>
-                    <div class="col s8 l8 offset-l2 offset-s2">
-                        <div class="card input-field" style="border-radius: 100px;">
-                            <input style="border: 0px;" placeholder="email" id="email" type="text"
-                                class="validate center">
-
-                        </div>
-                    </div>
-                    <div class="col s8 l8 offset-l2 offset-s2">
-                        <br>
-                        <div class="card input-field" style="border-radius: 100px;">
-                            <input style="border: 0px;" placeholder="password" id="email" type="text"
-                                class="validate center">
-
-                        </div>
-                    </div>
-                    <div class="col s8 l8 offset-l2 offset-s2">
-                        <br>
-                        <div class="card input-field" style="border-radius: 100px;">
-                            <input style="border: 0px;" placeholder=" confirm password" id="email" type="text"
-                                class="validate center">
-
-                        </div>
+                    <div class="input-field">
+                        <input id="login-password" type="password" required />
+                        <label for="login-password">Password</label>
                     </div>
                     <div class="col s8 l8 offset-l2 offset-s2">
                         <br>
                         <a style="width: 100%; border-radius: 100px; background-color: #403038;"
-                            href="./pages/home.html" class="btn"><span style="font-size: x-small;">Sign In</span></a>
+                            href="./pages/home.html" class="btn"><span style="font-size: x-small;">Sign
+                                In</span></a>
                     </div>
                 </form>
             </div>
+        </div>
 
+        <div class="modal" id="modal-signup">
+            <div class="row container">
+                <br>
+                <h4 class="center">Create Account</h4>
+                <form id="signup-form">
+                    <div class="input-field">
+                        <input id="signup-email" type="email" required />
+                        <label for="signup-email">Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="signup-password" type="password" required />
+                        <label for="signup-password">Password</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="signup-passwordConfirm" type="password" required />
+                        <label for="signup-passwordConfirm">Confirm Password</label>
+                    </div>
+                    <div class="col s8 l8 offset-l2 offset-s2">
+                        <br>
+                        <a style="width: 100%; border-radius: 100px; background-color: #403038;"
+                            href="./pages/home.html" class="btn"><span style="font-size: x-small;">Sign
+                                Up</span></a>
+                    </div>
+                </form>
+            </div>
         </div>
 
     </div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
-
-    <script>
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        var firebaseConfig = {
-            apiKey: "AIzaSyANtOHw7cyhZM0JC3545b1_3CkNA8Hzles",
-            authDomain: "floriofeel-pwa.firebaseapp.com",
-            projectId: "floriofeel-pwa",
-            storageBucket: "floriofeel-pwa.appspot.com",
-            messagingSenderId: "650188182160",
-            appId: "1:650188182160:web:80f34729f36a4c299bfe15",
-            measurementId: "G-3D0PVZ5JDN"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-    </script>
-
+    <!-- Other scripts -->
     <script src="./js/app.js"></script>
     <script src="./js/db.js"></script>
     <script src="./js/ui.js"></script>
+    <script src="./js/auth.js"></script>
+    <script src="./js/index.js"></script>
 </body>
 
 </html>
