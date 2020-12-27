@@ -1,16 +1,16 @@
-const staticCacheName = 'site-static-v15';
-const dynamicCacheName = 'site-dynamic-v14';
+const staticCacheName = 'site-static-v27';
+const dynamicCacheName = 'site-dynamic-v30';
 const assets = [
-    '/',
-    '/index.html',
-    '/pages/fallback.html',
-    '/js/app.js',
-    '/js/scripts.js',
-    '/js/materialize.min.js',
-    '/css/styles.css',
-    '/css/materialize.min.css',
-    '/img/floriofeel logo.png',
-    '/img/HiResMeadow.jpg',
+    './',
+    './index.html',
+    './pages/fallback.html',
+    './js/app.js',
+    './js/scripts.js',
+    './js/materialize.min.js',
+    './css/styles.css',
+    './css/materialize.min.css',
+    './img/floriofeel logo.png',
+    './img/HiResMeadow.jpg',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     'https://fonts.gstatic.com/s/materialicons/v67/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
     'https://use.fontawesome.com/releases/v5.13.0/css/all.css'
