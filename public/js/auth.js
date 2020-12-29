@@ -1,7 +1,10 @@
+var user;
 //listen for auth status changes
 auth.onAuthStateChanged(user => {
     if (user) {
-        console.log("user logged in: ", user);
+        user = firebase.auth().currentUser;
+        console.log("user logged in: ", user.uid);
+        sessionStorage.setItem("UID", user.uid);
         sessionStorage.setItem("UserEmail", user.email);
         //window.location.assign('./pages/home.html');
     } else {
@@ -12,7 +15,6 @@ auth.onAuthStateChanged(user => {
 //sign up
 const signupForm = document.querySelector('#signup-form');
 signupForm.addEventListener('submit', (e) => {
-    console.log("please");
     e.preventDefault();
 
     //get user info
@@ -20,7 +22,7 @@ signupForm.addEventListener('submit', (e) => {
     const pass = signupForm['signup-password'].value;
     const passConf = signupForm['signup-passwordConfirm'].value;
 
-    console.log(email, pass, passConf);
+    //console.log(email, pass, passConf);
 
     //sign up user
     if (pass === passConf) {
@@ -30,16 +32,23 @@ signupForm.addEventListener('submit', (e) => {
             M.Modal.getInstance(modal).close();
             signupForm.reset();
             
-            //send verification email
-            var user = firebase.auth().currentUser;
+            
+            user = firebase.auth().currentUser;
 
+            db.collection("histories").doc(user.uid).set({
+                email: user.email
+            }).then(function() {
+                console.log("document created");
+            })
+
+            //send verification email
             user.sendEmailVerification().then(function () {
                 // Email sent.
             }).catch(function (error) {
                 // An error happened.
             });
 
-            window.location.assign('./pages/home.html');
+            //window.location.assign('./pages/home.html');
         });
     }
     else {
@@ -62,4 +71,24 @@ loginForm.addEventListener('submit', (e) => {
         loginForm.reset();
         window.location.assign('./pages/home.html');
     })
-})
+});
+
+function SaveData() {
+
+    var d = new Date();
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    const entry = {
+        name: sessionStorage.getItem("name"),
+        emotion: sessionStorage.getItem("emotion"),
+        image: sessionStorage.getItem("image"),
+        day: d.getDate(),
+        month: months[d.getMonth()],
+        year: d.getFullYear(),
+        time: d.getHours() + ":" + d.getMinutes()
+    };
+
+    db.collection("histories").doc(sessionStorage.getItem("UID")).collection("history").add(entry).then(function () {
+        console.log("added entry!");
+    });
+}
