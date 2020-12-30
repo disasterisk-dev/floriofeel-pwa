@@ -85,7 +85,8 @@ function SaveData() {
         day: d.getDate(),
         month: months[d.getMonth()],
         year: d.getFullYear(),
-        time: d.getHours() + ":" + d.getMinutes()
+        time: d.getHours() + ":" + d.getMinutes(),
+        note: ""
     };
 
     db.collection("histories").doc(sessionStorage.getItem("UID")).collection("history").add(entry).then(function () {

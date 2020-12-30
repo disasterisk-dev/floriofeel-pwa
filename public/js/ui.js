@@ -131,3 +131,44 @@ function populateInfo() {
 
     document.querySelector('.info').innerHTML += html
 }
+
+function populateHistory(data, id) {
+
+    var html = `
+        <div class="col s12 l12">
+            <a href="#${id}" class="modal-trigger black-text" style="background-color: #403038;">
+                <div class="card" id="${id}" style="border-radius: 10px;">
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col s4 l4">
+                                <img class="responsive-img" src="${data.image}" alt="">
+                            </div>
+                            <div class="col s8 l8">
+                                <span style="font-size: x-large;">${data.name}</span><br>
+                                <span style="font-size: large;">${data.emotion}</span><br>
+                                <span style="font-size: small;"><i>${data.day} ${data.month} ${data.year}</i></span>
+                                <br>
+                                <span style="font-size: small;"><i>at ${data.time}</i></span>
+                            </div>
+                        </div>
+
+                    </div>    
+                </div>
+            </a>
+            <br>
+
+        </div>
+    `;
+
+    document.querySelector('.history').innerHTML += html;
+
+    html = `
+        <div class="modal" id="${id}">
+            <div class="row container">
+                <p>${id}</p>
+            </div>
+        </div>
+    `;
+
+    document.querySelector('.modals').innerHTML += html;
+}
