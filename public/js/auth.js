@@ -72,24 +72,3 @@ loginForm.addEventListener('submit', (e) => {
         window.location.assign('./pages/home.html');
     })
 });
-
-function SaveData() {
-
-    var d = new Date();
-    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-    const entry = {
-        name: sessionStorage.getItem("name"),
-        emotion: sessionStorage.getItem("emotion"),
-        image: sessionStorage.getItem("image"),
-        day: d.getDate(),
-        month: months[d.getMonth()],
-        year: d.getFullYear(),
-        time: d.getHours() + ":" + d.getMinutes(),
-        note: ""
-    };
-
-    db.collection("histories").doc(sessionStorage.getItem("UID")).collection("history").add(entry).then(function () {
-        console.log("added entry!");
-    });
-}

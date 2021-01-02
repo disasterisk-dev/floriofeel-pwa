@@ -143,19 +143,18 @@ function populateHistory(data, id) {
                             <div class="col s4 l4">
                                 <img class="responsive-img" src="${data.image}" alt="">
                             </div>
-                            <div class="col s8 l8">
-                                <span style="font-size: x-large;">${data.name}</span><br>
-                                <span style="font-size: large;">${data.emotion}</span><br>
-                                <span style="font-size: small;"><i>${data.day} ${data.month} ${data.year}</i></span>
-                                <br>
-                                <span style="font-size: small;"><i>at ${data.time}</i></span>
+                            <div class="col s8 l8 right-align">
+                                <span style="font-size: x-large;">${data.name} </span><br>
+                                <span style="font-size: large;">(${data.emotion})</span>
                             </div>
                         </div>
-
-                    </div>    
+                        
+                        <p style="font-size: small;" class="right">${data.time} - ${data.day} ${data.month} ${data.year}</p>
+                    </div>   
+                    
                 </div>
+                
             </a>
-            <br>
 
         </div>
     `;
@@ -163,9 +162,64 @@ function populateHistory(data, id) {
     document.querySelector('.history').innerHTML += html;
 
     html = `
-        <div class="modal" id="${id}">
-            <div class="row container">
-                <p>${id}</p>
+        <div class="modal" id="${id}" style="border-radius: 10px;">
+            <div class="container">
+                <br>
+                <div class="row">
+                    <div class="col s3 l3">
+                        <img class="responsive-img" src="${data.image}" alt="">
+                    </div>
+                    <div class="col s9 l9">
+                        <span style="font-size: x-large;">${data.name}</span>
+                        <span style="font-size: large;"> (${data.emotion})</span><br>
+                        <span style="font-size: small;"><i>${data.day} ${data.month} ${data.year}</i></span>
+                    </div>
+                </div>
+                <br>
+                <div class="row ${id}-note">
+    `;
+
+    if(data.note){
+        html += `
+            <div class="col s12 l12">
+                <p>${data.note}</p>
+                <br>
+            </div>
+            <div>
+                <a style="background-color: #403038;" class="btn-floating" onclick="" id="${id}-edit">
+                    <i class="material-icons">create</i>
+                </a>
+        `;
+
+        // document.getElementById(id + "-edit").style.display = block;
+        // document.getElementById(id + "-save").style.display = none;
+
+    } else {
+        html += `
+        <div class="col s12 l12">
+            <form id="form-${id}">
+                <div class="input-field">
+                    <textarea class="materialize-textarea" id="${id}-textarea" type="text" data-length="250" onKeyPress="if(this.value.length==250) return false;"></textarea>
+                    <label for="${id}-textarea">Add a note...</label>
+                </div>
+            </form>
+        </div>
+        <div>
+                <a style="background-color: #403038;" class="btn-floating" onclick="SaveNote('${id}')" id="${id}-save">
+                    <i class="material-icons">save</i>
+                </a>
+        `;
+
+        // document.getElementById(id + "-edit").style.display = none;
+        // document.getElementById(id + "-save").style.display = block;
+    }
+
+    html+= `
+            
+                <a class="btn-floating red darken-4 white-text" id="${id}-delete">
+                <i class="material-icons">delete</i>
+                </a>
+                
             </div>
         </div>
     `;

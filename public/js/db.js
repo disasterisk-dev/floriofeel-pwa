@@ -26,3 +26,57 @@ db.collection('flowers').onSnapshot((snapshot) => {
         }
     });
 });
+
+function SaveData() {
+
+    var d = new Date();
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    var minutes = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes();
+    var hours = d.getHours() < 10 ? "0" + d.getHours() : d.getHours();
+
+    const entry = {
+        name: sessionStorage.getItem("name"),
+        emotion: sessionStorage.getItem("emotion"),
+        image: sessionStorage.getItem("image"),
+        day: d.getDate(),
+        month: months[d.getMonth()],
+        year: d.getFullYear(),
+        time: d.getHours() + ":" + d.getMinutes(),
+        timestamp: -d.getTime()
+    };
+
+    db.collection("histories").doc(sessionStorage.getItem("UID")).collection("history").add(entry).then(function () {
+        console.log("added entry!");
+    });
+}
+
+function SaveNote(idRef) {
+
+    console.log("form-" + idRef);
+    var form = document.getElementById('form-' + idRef);
+
+    var noteValue = document.getElementById(idRef + "-textarea").value;
+
+    console.log("note: ", noteValue);
+    db.collection("histories").doc(sessionStorage.getItem("UID")).collection("history").doc(idRef).update({
+        note: noteValue
+    });
+
+    var html = `
+        <div class="col s12 l12">
+            <p>${noteValue}</p>
+            <br>
+        </div>
+        <div>
+            <a style="background-color: #403038;" class="btn-floating" onclick="" id="${idRef}-edit">
+                <i class="material-icons">create</i>
+            </a>
+            <a class="btn-floating red darken-4 white-text" id="${idRef}-delete">
+                <i class="material-icons">delete</i>
+            </a>
+        </div>
+    `;
+
+    document.querySelector('.' + idRef + '-note').innerHTML = html;
+}

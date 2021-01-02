@@ -55,18 +55,17 @@
     <div id="info" style="display: block;">
         <div class="container center">
             <div class="row" id="logout-div">
-                <div class="col s8 l8 offset-l2 offset-s2">
-                    <div class="userEmail">
+                <div class="col s12 l12">
+                    <div class="userEmail left">
                     </div>
                     <br>
-                    <a id="logout" class="btn red darken-4" style="border-radius: 100px; width: 100%;">
-                        <span style="font-size: x-small;">Sign Out</span>
+                    <a id="logout" class="btn-floating red darken-4 white-text right">
+                        <i class="material-icons">login</i>
                     </a>
-                    <br><br>
                 </div>
-                <div class="col s12 l12">
-                    <hr class="rounded">
-                </div>
+            </div>
+            <div class="col s12 l12">
+                <hr class="rounded">
             </div>
 
             <h5>Your Floriofeel history</h5>
@@ -123,7 +122,7 @@
 
         window.onload = function () {
 
-            db.collection('histories').doc(sessionStorage.getItem("UID")).collection('history').onSnapshot((snapshot) => {
+            db.collection('histories').doc(sessionStorage.getItem("UID")).collection('history').orderBy('timestamp').onSnapshot((snapshot) => {
                 //console.log(snapshot.docChanges());
                 snapshot.docChanges().forEach(change => {
                     //console.log(change, change.doc.data(), change.doc.id);
@@ -133,6 +132,7 @@
                         populateHistory(change.doc.data(), change.doc.id);
                         $(document).ready(function () {
                             $('#' + change.doc.id).modal();
+                            $('#' + change.doc.id + '-textarea').characterCounter();
                         });
                     }
                     if (change.type === 'removed') {
@@ -141,7 +141,7 @@
                 });
             });
 
-            document.querySelector('.userEmail').innerHTML += `<h5>Signed in as ${sessionStorage.getItem("UserEmail")}</h5>`;
+            document.querySelector('.userEmail').innerHTML += `<h5>${sessionStorage.getItem("UserEmail")}</h5>`;
             const logout = document.querySelector('#logout');
             logout.addEventListener('click', (e) => {
                 e.preventDefault();
