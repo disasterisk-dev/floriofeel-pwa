@@ -52,7 +52,7 @@
         </nav>
     </div>
 
-    <div id="info" style="display: block;">
+    <div class="main" id="info" style="display: block;">
         <div class="container center">
             <div class="row">
                 <div class="col s12 l12">
@@ -93,7 +93,8 @@
             <div class="row" id="">
 
                 <div class="col s8 l8 offset-s2 offset-l2">
-                    <a href="./history.html" style="border-radius: 100px; width: 100%; background-color: #403038;" class="btn white-text">
+                    <a href="./history.html" style="border-radius: 100px; width: 100%; background-color: #403038;"
+                        class="btn white-text">
                         <div class="container" style="padding-left: 30px; padding-right: 30px;">
                             <i class="material-icons left"></i><span class="right">View History</span>
                         </div>
@@ -112,7 +113,15 @@
             </div>
         </div>
     </div>
-    </div>
+
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container version">
+                © 2020 Joel Robinson
+                <a class="right white-text">Version 1.0.1</a>
+            </div>
+        </div>
+    </footer>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
@@ -144,7 +153,9 @@
     <script src="../js/db.js"></script>
     <script src="../js/ui.js"></script>
     <script>
-        document.querySelector('.userEmail').innerHTML += `<h4>${sessionStorage.getItem("UserEmail")}</h4>`;
+        document.querySelector('.userEmail').innerHTML = `<h4>${sessionStorage.getItem("UserEmail")}</h4>`;
+        document.querySelector('.version').innerHTML = `© 2020 Joel Robinson
+                <a class="right white-text">Version ${versionNum}</a>`;
         const logout = document.querySelector('#logout');
         logout.addEventListener('click', (e) => {
             e.preventDefault();

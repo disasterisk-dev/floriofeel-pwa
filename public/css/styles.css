@@ -3,7 +3,14 @@ body{
     height: 100%;
     overflow-x: hidden;
     font-family: 'Quicksand', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
+
+.main {
+    flex: 1 0 auto;
+  }
 
 .lever:after{
     color: #403038;
@@ -27,4 +34,8 @@ body{
     top: 40%; 
     left: 50%; 
     transform: translate(-50%, -50%);
+}
+
+.page-footer{
+    background-color: rgba(0, 0, 0, 0);
 }
