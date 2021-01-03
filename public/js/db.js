@@ -42,7 +42,7 @@ function SaveData() {
         day: d.getDate(),
         month: months[d.getMonth()],
         year: d.getFullYear(),
-        time: d.getHours() + ":" + d.getMinutes(),
+        time: hours + ":" + minutes,
         timestamp: -d.getTime()
     };
 
@@ -94,7 +94,7 @@ function DeleteEntry(idRef) {
 
 function AddZeroes(num) {
 
-    if(num.length === 1){
+    if(num.toString().length === 1){
 
         if (num < 10) {
             return "0" + num;
