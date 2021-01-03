@@ -42,7 +42,7 @@
                 <a href="./home.html"><img class="responsive-img" src="../img/floriofeel logo.png"
                         style="height: 70%; padding-top: 15px;"></a>
                 <span class="right">
-                    <a href="./history.html"><i class="material-icons">account_circle</i>
+                    <a href="./settings.html"><i class="material-icons">account_circle</i>
                     </a>
 
                 </span>
@@ -54,20 +54,6 @@
 
     <div id="info" style="display: block;">
         <div class="container center">
-            <div class="row" id="logout-div">
-                <div class="col s12 l12">
-                    <div class="userEmail left">
-                    </div>
-                    <br>
-                    <a id="logout" class="btn-floating red darken-4 white-text right">
-                        <i class="material-icons">login</i>
-                    </a>
-                </div>
-            </div>
-            <div class="col s12 l12">
-                <hr class="rounded">
-            </div>
-
             <h5>Your Floriofeel history</h5>
             <br>
 
@@ -113,12 +99,6 @@
     <script src="../js/db.js"></script>
     <script src="../js/ui.js"></script>
     <script>
-        $(document).ready(function () {
-            $('.modal').modal();
-        });
-        //console.log("modals initialised")
-    </script>
-    <script>
 
         window.onload = function () {
 
@@ -138,16 +118,6 @@
                     if (change.type === 'removed') {
                         //remove data from page
                     }
-                });
-            });
-
-            document.querySelector('.userEmail').innerHTML += `<h5>${sessionStorage.getItem("UserEmail")}</h5>`;
-            const logout = document.querySelector('#logout');
-            logout.addEventListener('click', (e) => {
-                e.preventDefault();
-                auth.signOut().then(() => {
-                    //console.log("user logged out");
-                    window.location.assign('../index.html');
                 });
             });
         };

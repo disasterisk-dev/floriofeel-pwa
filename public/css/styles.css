@@ -5,6 +5,10 @@ body{
     font-family: 'Quicksand', sans-serif;
 }
 
+.lever:after{
+    color: #403038;
+}
+
 ::placeholder{
     color: #403038;
 }

@@ -24,9 +24,9 @@ function showName(id, name, desc, emotion, clicks, latin, image, info) {
         <p>${desc}</p>
         <div class="col s8 l8 offset-l2 offset-s2">
             <br>
-            <a id="proceed" href="./nudges.html" class="btn"
+            <a id="proceed" href="./nudges.html" onclick="SaveData();" class="btn"
                 style="border-radius: 100px; width: 100%; background-color: #403038;">
-                <span style="font-size: x-small;">Proceed</span>
+                <span>Proceed</span>
             </a>
         </div>
     `;
@@ -45,16 +45,6 @@ function showName(id, name, desc, emotion, clicks, latin, image, info) {
 
 function populateNudges() {
 
-    db.collection('flowers').doc(sessionStorage.getItem("id")).collection('nudges').onSnapshot((snapshot) => {
-        //console.log(snapshot.docChanges());
-        var nudgeNum = 1;
-        snapshot.docChanges().forEach(change => {
-            sessionStorage.setItem(nudgeNum, change.doc.id);
-            nudgeNum++;
-            console.log(change.doc.id); //this works
-        });
-    });
-
     var html = `
         <h5>You are not alone...</h5>
         <h1>${sessionStorage.getItem("clicks")}</h1>
@@ -69,9 +59,6 @@ function populateNudges() {
                         <h5>If you're feeling ${sessionStorage.getItem("emotion")}, consider...</h5>
 
                         <ul class="list">
-                            <li>${sessionStorage.getItem("1")}</li>
-                            <li>${sessionStorage.getItem("2")}</li>
-                            <li>${sessionStorage.getItem("3")}</li>
                         </ul>
                     </div>
                 </div>
@@ -80,15 +67,13 @@ function populateNudges() {
             <div class="col s8 l8 offset-l2 offset-s2">
                 <br>
                 <a href="./info.html" class="btn"
-                    style="border-radius: 100px; width: 100%; background-color: #403038;"><span
-                        style="font-size: x-small;">About the ${sessionStorage.getItem("name")}</span></a>
+                    style="border-radius: 100px; width: 100%; background-color: #403038;"><span>About the ${sessionStorage.getItem("name")}</span></a>
             </div>
 
             <div class="col s8 l8 offset-l2 offset-s2">
                 <br>
                 <a href="./history.html" class="btn"
-                    style="border-radius: 100px; width: 100%; background-color: #403038;"><span
-                        style="font-size: x-small;">conclude</span></a>
+                    style="border-radius: 100px; width: 100%; background-color: #403038;"><span>View History</span></a>
             </div>
         </div>
     `;
@@ -182,11 +167,11 @@ function populateHistory(data, id) {
     if(data.note){
         html += `
             <div class="col s12 l12">
-                <p>${data.note}</p>
+                <p id="${id}-currentNote" style="font-size: medium;">${data.note}</p>
                 <br>
             </div>
             <div>
-                <a style="background-color: #403038;" class="btn-floating" onclick="" id="${id}-edit">
+                <a style="background-color: #403038;" class="btn-floating" onclick="NoteEdit('${id}')" id="${id}-edit">
                     <i class="material-icons">create</i>
                 </a>
         `;
@@ -216,7 +201,7 @@ function populateHistory(data, id) {
 
     html+= `
             
-                <a class="btn-floating red darken-4 white-text" id="${id}-delete">
+                <a class="btn-floating red darken-4 white-text" id="${id}-delete" onclick="DeleteEntry('${id}')">
                 <i class="material-icons">delete</i>
                 </a>
                 
@@ -226,3 +211,42 @@ function populateHistory(data, id) {
 
     document.querySelector('.modals').innerHTML += html;
 }
+
+function NoteEdit(id){
+
+    var target = document.getElementById(id + "-currentNote");
+    var currentNote = target.childNodes[0].nodeValue;
+
+    //console.log(currentNote);
+
+    const html = `
+        <div class="col s12 l12">
+            <form id="form-${id}">
+                <div class="input-field">
+                    <textarea class="materialize-textarea" id="${id}-textarea" type="text" data-length="250" onKeyPress="if(this.value.length==250) return false;"></textarea>
+                    <label for="${id}-textarea" class="active">Edit your Note...</label>
+                </div>
+            </form>
+        </div>
+        <div>
+            <a style="background-color: #403038;" class="btn-floating" onclick="SaveNote('${id}')" id="${id}-save">
+                <i class="material-icons">save</i>
+            </a>
+            <a class="btn-floating red darken-4 white-text" id="${id}-delete" onclick="DeleteEntry('${id}')">
+                <i class="material-icons">delete</i>
+            </a>
+                
+            </div>
+        </div>
+    `;
+
+    document.querySelector('.' + id + "-note").innerHTML = html;
+
+    
+    $('#' + id + '-textarea').val(currentNote);
+    M.textareaAutoResize($('#' + id + '-textarea'));
+    $(function() {
+        $('#' + id + '-textarea').characterCounter();
+    });
+}
+

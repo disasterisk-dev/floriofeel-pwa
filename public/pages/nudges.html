@@ -41,7 +41,7 @@
                 <a href="./home.html"><img class="responsive-img" src="../img/floriofeel logo.png"
                         style="height: 70%; padding-top: 15px;"></a>
                 <span class="right">
-                    <a href="./history.html"><i class="material-icons">account_circle</i>
+                    <a href="./settings.html"><i class="material-icons">account_circle</i>
                     </a>
                 </span>
                 <span class="left">
@@ -92,7 +92,20 @@
     <script>
         window.onload = function () {
             populateNudges();
-            SaveData();
+
+            db.collection('flowers').doc(sessionStorage.getItem("id")).collection('nudges').onSnapshot((snapshot) => {
+                snapshot.docChanges().forEach(change => {
+                    // sessionStorage.setItem(nudgeNum, change.doc.id);
+                    // nudgeNum++;
+                    console.log(change.doc.id); //this works
+
+                    const html = `
+                        <li>${change.doc.id}</li>
+                    `;
+
+                    document.querySelector('.list').innerHTML += html;
+                });
+            });
         };
     </script>
 </body>
