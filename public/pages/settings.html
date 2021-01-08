@@ -31,7 +31,7 @@
     <meta name="theme-color" content="#403038">
 </head>
 
-<body class="grey lighten-2">
+<body class="">
 
     <!-- top navigation -->
     <div class="navbar-fixed">
@@ -82,12 +82,11 @@
                     <div class="switch right">
                         <br>
                         <label>
-                            <input type="checkbox">
+                            <input class="dark-mode" type="checkbox">
                             <span class="lever"></span>
                         </label>
                     </div>
                 </div>
-
             </div>
             <br>
             <div class="row" id="">
@@ -163,6 +162,15 @@
                 //console.log("user logged out");
                 window.location.assign('../index.html');
             });
+        });
+
+        const darkModeToggle = document.querySelector('.dark-mode');
+
+        darkModeToggle.addEventListener("click", () => {
+            if(localStorage.getItem("DarkMode") !== "on"){
+                EnableDarkMode();
+            }
+
         });
     </script>
 </body>

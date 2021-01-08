@@ -164,7 +164,7 @@ function populateHistory(data, id) {
                 <div class="row ${id}-note">
     `;
 
-    if(data.note){
+    if (data.note) {
         html += `
             <div class="col s12 l12">
                 <p id="${id}-currentNote" style="font-size: medium;">${data.note}</p>
@@ -199,7 +199,7 @@ function populateHistory(data, id) {
         // document.getElementById(id + "-save").style.display = block;
     }
 
-    html+= `
+    html += `
             
                 <a class="btn-floating red darken-4 white-text" id="${id}-delete" onclick="DeleteEntry('${id}')">
                 <i class="material-icons">delete</i>
@@ -212,7 +212,7 @@ function populateHistory(data, id) {
     document.querySelector('.modals').innerHTML += html;
 }
 
-function NoteEdit(id){
+function NoteEdit(id) {
 
     var target = document.getElementById(id + "-currentNote");
     var currentNote = target.childNodes[0].nodeValue;
@@ -242,11 +242,41 @@ function NoteEdit(id){
 
     document.querySelector('.' + id + "-note").innerHTML = html;
 
-    
+
     $('#' + id + '-textarea').val(currentNote);
     M.textareaAutoResize($('#' + id + '-textarea'));
-    $(function() {
+    $(function () {
         $('#' + id + '-textarea').characterCounter();
     });
+}
+
+function EnableDarkMode() {
+
+    document.querySelector("body").style.backgroundColor = "#3f3c3c";
+    document.querySelector("body").style.color = "#fff";
+
+    document.querySelector(".modal").style.backgroundColor = "#401D2E";
+
+    document.querySelector(".card").style.backgroundColor = "#401D2E";
+    document.querySelector(".card").style.color = "#fff";
+
+    document.querySelector("textarea").style.color = "#fff";
+
+    localStorage.setItem("DarkMode", "on");
+}
+
+function DisableDarkMode() {
+
+    document.querySelector("body").style.backgroundColor = "#e0e0e0";
+    document.querySelector("body").style.color = "#000";
+
+    document.querySelector(".modal").style.backgroundColor = "#fff";
+
+    document.querySelector(".card").style.backgroundColor = "#fff";
+    document.querySelector(".card").style.color = "#000";
+
+    document.querySelector("textarea").style.color = "#000";
+
+    localStorage.setItem("DarkMode", null);
 }
 

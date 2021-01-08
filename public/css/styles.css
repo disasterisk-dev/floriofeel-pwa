@@ -6,6 +6,28 @@ body{
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: #e0e0e0;
+    color: #000;
+    background-image: url(/img/HiResMeadowOverlay.png); background-position: center;
+}
+
+.modal{
+    background-color: #fff;
+}
+
+.card{
+    background-color: #fff;
+    color: #000;
+}
+
+textarea{
+    color: #000;
+}
+
+.button-css{
+    background-color: #403038;
+    border-radius: 100px;
+    width: 100%;
 }
 
 .main {
