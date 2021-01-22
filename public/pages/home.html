@@ -57,20 +57,21 @@
             <h4>How are you feeling today?</h4>
             <br>
 
-            <div class="row ">
+            <div class="row">
+                <div class="col s12 l6 offset-l3">
+                    <div class="row">
+                        <div class="flowers"></div>
+                    </div>
+                </div>
+            </div>
 
-                <div class="flowers"></div>
-
-                <div class="col s12 l12 highlight-info">
+            <div class="row">
+                <div class="col s12 l6 offset-l3">
                     <div class="highlight">
                         <h5>Select the flower that best represents your current feelings</h5>
                     </div>
                 </div>
-
-
-
             </div>
-
 
 
         </div>
@@ -107,7 +108,7 @@
     <script src="../js/ui.js"></script>
     <script src="../js/auth.js"></script>
     <script>
-        window.onload = function() {
+        window.onload = function () {
             //console.log("user logged in: ", firebase.auth().currentUser.getToken);
         };
     </script>
