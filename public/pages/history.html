@@ -108,7 +108,7 @@
                     //console.log(change, change.doc.data(), change.doc.id);
                     if (change.type === 'added') {
                         //add data to page
-                        console.log("added card and modal");
+                        //console.log("added card and modal");
                         populateHistory(change.doc.data(), change.doc.id);
                         $(document).ready(function () {
                             $('#' + change.doc.id).modal();

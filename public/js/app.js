@@ -1,4 +1,4 @@
-const versionNum = '1.0.1';
+const versionNum = '0.10.4';
 
 if('serviceWorker' in navigator){
     navigator.serviceWorker.register('../sw.js')

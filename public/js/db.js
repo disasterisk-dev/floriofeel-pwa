@@ -47,18 +47,18 @@ function SaveData() {
     };
 
     db.collection("histories").doc(sessionStorage.getItem("UID")).collection("history").add(entry).then(function () {
-        console.log("added entry!");
+        //console.log("added entry!");
     });
 }
 
 function SaveNote(idRef) {
 
-    console.log("form-" + idRef);
+    //console.log("form-" + idRef);
     var form = document.getElementById('form-' + idRef);
 
     var noteValue = document.getElementById(idRef + "-textarea").value;
 
-    console.log("note: ", noteValue);
+    //console.log("note: ", noteValue);
     db.collection("histories").doc(sessionStorage.getItem("UID")).collection("history").doc(idRef).update({
         note: noteValue
     });
@@ -79,14 +79,15 @@ function SaveNote(idRef) {
     `;
 
     document.querySelector('.' + idRef + '-note').innerHTML = html;
+    document.querySelector("#noteIcon-" + idRef).style.color = "#401D2E";
 }
 
 function DeleteEntry(idRef) {
 
     db.collection("histories").doc(sessionStorage.getItem("UID")).collection("history").doc(idRef).delete().then(function () {
-        console.log("Document successfully deleted!");
+        //console.log("Document successfully deleted!");
     }).catch(function (error) {
-        console.error("Error removing document: ", error);
+        //console.error("Error removing document: ", error);
     });
 
     window.location.reload();

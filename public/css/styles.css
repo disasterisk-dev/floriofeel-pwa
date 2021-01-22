@@ -7,8 +7,6 @@ body{
     min-height: 100vh;
     flex-direction: column;
     background-color: #e0e0e0;
-    color: #000;
-    background-image: url(/img/HiResMeadowOverlay.png); background-position: center;
 }
 
 .modal{

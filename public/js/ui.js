@@ -2,8 +2,8 @@
 function renderFlowerOption(data, id) {
 
     const html = `
-        <div class="col s4 l4" data-id="${id}">
-            <div class="card" style="border-radius: 10px;">
+        <div class="col s4 l4">
+            <div class="card" style="border-radius: 10px;" id="flower-${id}">
                 <a onclick="showName('${id}','${data.name}','${data.description}','${data.emotion}','${data.clicks}','${data.latin}','${data.image}','${data.info}');">
                     <div class="card-content"><img style="opacity: 100%;" class="responsive-img" src="${data.image}" alt=""></div>
                 </a>
@@ -25,11 +25,17 @@ function showName(id, name, desc, emotion, clicks, latin, image, info) {
         <div class="col s8 l8 offset-l2 offset-s2">
             <br>
             <a id="proceed" href="./nudges.html" onclick="SaveData();" class="btn"
-                style="border-radius: 100px; width: 100%; background-color: #403038;">
-                <span>Proceed</span>
+                style="-webkit-border-radius: 100px; -moz-border-radius: 100px; border-radius: 100px; width: 100%; background-color: #403038;">
+                <span>Next</span>
             </a>
         </div>
     `;
+
+    if(sessionStorage.getItem("id")){
+        document.querySelector("#flower-" + sessionStorage.getItem("id")).style.border = "none";
+    }
+    
+    document.querySelector("#flower-" + id).style.border = "solid 3px #CA5B92";
 
     sessionStorage.setItem("id", id)
     sessionStorage.setItem("name", name);
@@ -73,7 +79,7 @@ function populateNudges() {
             <div class="col s8 l8 offset-l2 offset-s2">
                 <br>
                 <a href="./history.html" class="btn"
-                    style="border-radius: 100px; width: 100%; background-color: #403038;"><span>View History</span></a>
+                    style="border-radius: 100px; width: 100%; background-color: #403038;"><span>View My History</span></a>
             </div>
         </div>
     `;
@@ -131,14 +137,26 @@ function populateHistory(data, id) {
                             <div class="col s8 l8 right-align">
                                 <span style="font-size: x-large;">${data.name} </span><br>
                                 <span style="font-size: large;">(${data.emotion})</span>
+                                <br><br>
+                                `;
+
+                                if(data.note){
+                                    html += `
+                                    <i id="noteIcon-${id}" class="material-icons right" style="color: #401D2E">note</i>
+                                    `;
+                                } else {
+                                    html += `
+                                    <i id="noteIcon-${id}" class="material-icons right" style="color: #e0e0e0">note</i>
+                                    `;
+                                }
+
+                                html += `
+                                
                             </div>
                         </div>
-                        
                         <p style="font-size: small;" class="right">${data.time} - ${data.day} ${data.month} ${data.year}</p>
                     </div>   
-                    
                 </div>
-                
             </a>
 
         </div>
@@ -185,7 +203,7 @@ function populateHistory(data, id) {
             <form id="form-${id}">
                 <div class="input-field">
                     <textarea class="materialize-textarea" id="${id}-textarea" type="text" data-length="250" onKeyPress="if(this.value.length==250) return false;"></textarea>
-                    <label for="${id}-textarea">Add a note...</label>
+                    <label for="${id}-textarea">Add a note about this feeling</label>
                 </div>
             </form>
         </div>

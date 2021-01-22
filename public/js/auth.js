@@ -3,12 +3,12 @@ var user;
 auth.onAuthStateChanged(user => {
     if (user) {
         user = firebase.auth().currentUser;
-        console.log("user logged in: ", user.uid);
+        //console.log("user logged in: ", user.uid);
         sessionStorage.setItem("UID", user.uid);
         sessionStorage.setItem("UserEmail", user.email);
         //window.location.assign('./pages/home.html');
     } else {
-        console.log("user logged out");
+        //console.log("user logged out");
     }
 });
 
@@ -31,14 +31,14 @@ signupForm.addEventListener('submit', (e) => {
             const modal = document.querySelector('#modal-signup');
             M.Modal.getInstance(modal).close();
             signupForm.reset();
-            
-            
+
+
             user = firebase.auth().currentUser;
 
             db.collection("histories").doc(user.uid).set({
                 email: user.email
-            }).then(function() {
-                console.log("document created");
+            }).then(function () {
+                //console.log("document created");
             })
 
             //send verification email
@@ -71,4 +71,31 @@ loginForm.addEventListener('submit', (e) => {
         loginForm.reset();
         window.location.assign('./pages/home.html');
     })
+        .catch((error) => {
+
+            var errorCode = error.code;
+
+            var html = `<h5>Unknown error with login</h5>`;
+
+            if (errorCode === 'auth/wrong-password') {
+
+                html = `<h5>Incorrect password, please try again</h5>`;
+            }
+            else if (errorCode === 'auth/user-not-found') {
+
+                html = `<h5>No user found with this email address</h5>`;
+            }
+            else if (errorCode === 'auth/invalid-email') {
+
+                html = `<h5>The email address is invalid</h5>`;
+            }
+            else if (errorCode === 'auth/user-disabled') {
+
+                html = `<h5>Your account has been temporarily disabled, if you believe this to be an error please contact Floriofeel support</h5>`;
+            }
+
+            document.getElementById("login-warning").innerHTML = html;
+            document.getElementById("login-warning").style.display = 'block';
+
+        });
 });
